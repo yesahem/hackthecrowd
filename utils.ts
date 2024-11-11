@@ -4,7 +4,7 @@ export default function getApiUrl() {
 
     if (environment === "production") {
         
-        return `https://${process.env.VERCEL_URL!}`;
+        return `https://hackthecrowd-ioioii.vercel.app/`;
     } else {
         return process.env.NEXT_PUBLIC_API_URL!;
     }
