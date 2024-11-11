@@ -1,7 +1,9 @@
+import getApiUrl from '@/utils'
 import Link from 'next/link'
 
 async function getProject(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL ||  'https://' + process.env.NEXT_PUBLIC_VERCEL_URL}/api/projects${id}`, { cache: 'no-store' })
+    const apiUrl = getApiUrl()
+  const res = await fetch(`${apiUrl}/api/projects/${id}`, { cache: 'no-store' })
   if (!res.ok) {
     throw new Error('Failed to fetch project')
   }

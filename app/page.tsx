@@ -2,13 +2,15 @@
 import Link from 'next/link'
 import { ProjectCard } from '@/components/ProjectCard'
 import axios from 'axios'
+import getApiUrl from '@/utils'
 
 async function getProjects() {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/projects`)
-  if (!res.data) {
+  const apiURL = getApiUrl()
+  const res = await fetch(`${apiURL}/api/projects`)
+  if (!res.ok) {
     throw new Error('Failed to fetch projects')
   }
-  return res.data
+  return res.json()
 }
 
 export default async function Home() {
