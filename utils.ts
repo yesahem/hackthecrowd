@@ -1,5 +1,5 @@
 export default function getApiUrl() {
-    const environment = process.env.VERCEL_ENV!;
+    const environment = process.env.NODE_ENV!;
     console.log(environment);
 
     if (environment === "production") {
