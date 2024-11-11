@@ -2,7 +2,7 @@ export default function getApiUrl() {
     const environment = process.env.VERCEL_ENV!;
     console.log(environment);
 
-    if (environment === "Production") {
+    if (environment === "production") {
         
         return `https://${process.env.VERCEL_URL!}`;
     } else {
