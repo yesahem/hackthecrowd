@@ -1,20 +1,28 @@
-
+'use client'
 import Link from 'next/link'
 import { ProjectCard } from '@/components/ProjectCard'
 import axios from 'axios'
 import getApiUrl from '@/utils'
+import { useEffect, useState } from 'react'
 
-async function getProjects() {
-  const apiURL = getApiUrl()
-  const res = await fetch(`${apiURL}/api/projects`)
-  if (!res.ok) {
-    throw new Error('Failed to fetch projects')
-  }
-  return res.json()
-}
 
-export default async function Home() {
-  const projects = await getProjects()
+
+
+export default  function Home() {
+  const [projects,setProjects] = useState([])
+  useEffect(()=>{
+    const apiURL = getApiUrl()
+    const res = fetch(`${apiURL}/api/projects`).then((res)=>{
+      if (!res.ok) {
+        throw new Error('Failed to fetch projects')
+      }
+      res.json().then((data)=>{
+        setProjects(data)
+      })
+    })
+    
+    
+  },[])
 
   return (
     <main className="container mx-auto px-4 py-8">
