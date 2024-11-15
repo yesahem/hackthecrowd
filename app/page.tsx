@@ -12,7 +12,7 @@ export default  function Home() {
   const [projects,setProjects] = useState([])
   useEffect(()=>{
     const apiURL = getApiUrl()
-    const res = fetch(`${apiURL}/api/projects`).then((res)=>{
+    const res = fetch(`/api/projects/`).then((res)=>{
       if (!res.ok) {
         throw new Error('Failed to fetch projects')
       }
